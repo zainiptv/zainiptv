@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zain IPTV | باقات الاشتراك</title>
+    <title>Sony IPTV | باقات الاشتراك</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -15,7 +15,9 @@
             --text-light: #f5f5f7; 
             --text-dim: #86868b; 
         }
+        
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        
         body { 
             background: radial-gradient(circle at 50% -20%, #131c2e 0%, var(--bg-dark) 70%);
             background-color: var(--bg-dark); 
@@ -23,19 +25,73 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
+
+        /* Header & Navigation */
         header { 
-            background: rgba(7, 9, 14, 0.7); 
+            background: rgba(7, 9, 14, 0.8);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             position: fixed; top: 0; width: 100%; z-index: 1000; 
             border-bottom: 1px solid var(--glass-border); 
         }
-        .nav-container { max-width: 1100px; margin: 0 auto; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .brand-name { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; color: #ffffff; }
-        .brand-name span { color: var(--premium-blue); font-weight: 400; }
-        .nav-links { display: flex; gap: 35px; list-style: none; }
-        .nav-links a { color: var(--text-dim); text-decoration: none; font-weight: 600; font-size: 15px; transition: color 0.4s; }
-        .nav-links a:hover, .nav-links a.active { color: #ffffff; }
         
+        .nav-container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 15px 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .brand-name { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; color: #ffffff; text-decoration: none; z-index: 1001; }
+        .brand-name span { color: var(--premium-blue); font-weight: 400; }
+        
+        /* زر القائمة الجانبية (3 شخوط) */
+        .menu-toggle { 
+            display: block; 
+            font-size: 26px; 
+            color: #ffffff; 
+            background: none; 
+            border: none; 
+            cursor: pointer; 
+            z-index: 1002; 
+            transition: color 0.3s;
+        }
+        .menu-toggle:hover { color: var(--premium-blue); }
+
+        /* القائمة المنسدلة من اليمين */
+        .nav-links { 
+            position: fixed; 
+            top: 0; 
+            right: -400px; 
+            width: 350px; 
+            height: 100vh; 
+            background: rgba(7, 9, 14, 0.98); 
+            border-left: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column; 
+            justify-content: flex-start; 
+            padding: 100px 40px 40px 40px; 
+            gap: 25px; 
+            transition: right 0.5s cubic-bezier(0.1, 0.9, 0.2, 1);
+            box-shadow: -15px 0 40px rgba(0,0,0,0.8);
+            list-style: none;
+            z-index: 1000;
+        }
+        .nav-links.active { right: 0; }
+        
+        .nav-links a { 
+            color: var(--text-dim); 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 18px; 
+            transition: color 0.3s; 
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
+            padding-bottom: 15px; 
+            display: block;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #ffffff; padding-right: 10px; }
+
         .section-container { max-width: 1100px; margin: 160px auto 60px auto; padding: 20px; }
         .section-header { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 40px; letter-spacing: -0.5px; }
         .section-header span { color: var(--premium-blue); }
@@ -79,16 +135,30 @@
         .footer-info { display: flex; justify-content: center; gap: 40px; margin-bottom: 20px; }
         .footer-info a { color: var(--text-light); text-decoration: none; font-weight: 600; transition: color 0.3s; }
         .footer-info a:hover { color: var(--premium-blue); }
-        @media (max-width: 768px) { .nav-links { display: none; } .pricing-grid { gap: 20px; } }
+        
+        /* 📱 شاشات الموبايل */
+        @media (max-width: 768px) { 
+            .nav-links { width: 75%; right: -100%; padding: 80px 25px 30px 25px; }
+            .pricing-grid { gap: 20px; } 
+        }
     </style>
 </head>
 <body>
+
     <header>
         <div class="nav-container">
-            <div class="brand-name">Zain <span>IPTV</span></div>
-            <ul class="nav-links">
+            <!-- زر القائمة (3 شخوط) على اليمين دائماً -->
+            <button class="menu-toggle" id="menuBtn" aria-label="Open Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- الشعار على اليسار -->
+            <a href="index.html" class="brand-name">Sony <span>IPTV</span></a>
+            
+            <!-- القائمة الجانبية المخفية -->
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="movies.html">الأفلام والمنصات</a></li>
+                <li><a href="movies.html">الأفلام والمسلسلات</a></li>
                 <li><a href="pricing.html" class="active">الاشتراكات والدفع</a></li>
             </ul>
         </div>
@@ -117,7 +187,7 @@
                     <li><i class="fas fa-circle"></i> ثبات مطلق ومضمون 100% أثناء المباريات الكبرى</li>
                     <li><i class="fas fa-circle"></i> أولوية قصوى وشاملة للدعم الفني 24/7</li>
                 </ul>
-                <a href="https://wa.me/963958793933" target="_blank" class="btn-buy">اشترك عبر واتساب</a>
+                <a href="https://wa.me/958793933" target="_blank" class="btn-buy">اشترك عبر واتساب</a>
             </div>
             <!-- 6 أشهر -->
             <div class="price-card">
@@ -139,8 +209,7 @@
             <div class="payment-row">
                 <div class="pay-pill"><i class="fas fa-wallet"></i> شام كاش (Sham Cash)</div>
                 <div class="pay-pill"><i class="fas fa-credit-card"></i> تحويل محلي مباشر / كاش</div>
-    <div class="pay-pill"><i class="fas fa-wallet"></i> زراعات بنك (ziraat bank)</div>
-
+                <div class="pay-pill"><i class="fas fa-university"></i> زراعات بنك (Ziraat Bank)</div>
             </div>
         </div>
     </section>
@@ -150,7 +219,31 @@
             <a href="https://t.me/zainiptv4" target="_blank"><i class="fab fa-telegram"></i> تلجرام</a>
             <a href="https://wa.me/963958793933" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
         </div>
-        <p>جميع الحقوق محفوظة &copy; 2026 لـ <strong>Zain IPTV</strong></p>
+        <p>جميع الحقوق محفوظة &copy; 2026 لـ <strong>Sony IPTV</strong></p>
     </footer>
+
+    <!-- سكريبت إظهار القائمة من اليمين بشكل فخم -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', (e) => {
+            navLinks.classList.toggle('active');
+            const icon = menuBtn.querySelector('i');
+            if(navLinks.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+            e.stopPropagation();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && e.target !== menuBtn) {
+                navLinks.classList.remove('active');
+                menuBtn.querySelector('i').className = 'fas fa-bars';
+            }
+        });
+    </script>
 </body>
 </html>
