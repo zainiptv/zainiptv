@@ -111,7 +111,7 @@
         /* Container Setup */
         .section-container { max-width: 1100px; margin: 0 auto; padding: 20px; }
         
-        /* Apps Download Grid (نفس شبكة معلومات الصفحة الرئيسية) */
+        /* Apps Download Grid */
         .apps-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -129,13 +129,11 @@
             transition: border-color 0.4s, transform 0.4s;
         }
         
-        /* تأثير حركي فخم عند تمرير الماوس على الكرت */
         .app-card:hover {
             border-color: var(--premium-blue);
             transform: translateY(-5px);
         }
 
-        /* تنسيق اللوغو القابل للضغط */
         .logo-link {
             display: inline-block;
             margin-bottom: 25px;
@@ -150,7 +148,6 @@
             cursor: pointer;
         }
         
-        /* تأثير التوهج الفخم عند التأشير على اللوغو */
         .logo-link:hover .logo-img {
             transform: scale(1.06);
             filter: drop-shadow(0 0 20px rgba(10, 132, 255, 0.6));
@@ -160,7 +157,6 @@
         .app-card p { color: var(--text-dim); font-size: 16px; line-height: 1.7; font-weight: 300; margin-bottom: 15px; }
         .download-hint { font-size: 13px; color: var(--premium-blue); font-weight: 600; letter-spacing: 0.5px; }
 
-        /* الفوتر */
         footer { padding: 40px 20px; text-align: center; background: #040508; border-top: 1px solid var(--glass-border); font-size: 14px; color: var(--text-dim); margin-top: 60px; }
         .footer-info { display: flex; justify-content: center; gap: 40px; margin-bottom: 20px; }
         .footer-info a { color: var(--text-light); text-decoration: none; font-weight: 600; transition: color 0.3s; }
@@ -207,7 +203,7 @@
         <div class="apps-grid">
             
             <div class="app-card">
-                <a href="zain-tv.apk" download class="logo-link" title="اضغط لتحميل تطبيق ZAIN TV">
+                <a href="https://blueiptv.us/apps/ZAIN.TV.apk" class="logo-link" title="اضغط لتحميل تطبيق ZAIN TV">
                     <img src="zain tv.png" alt="ZAIN TV Logo" class="logo-img">
                 </a>
                 <h3>ZAIN TV</h3>
@@ -216,7 +212,7 @@
             </div>
 
             <div class="app-card">
-                <a href="blue-4k.apk" download class="logo-link" title="اضغط لتحميل تطبيق BLUE 4K">
+                <a href="https://blueiptv.us/apps/blue4k+.apk" class="logo-link" title="اضغط لتحميل تطبيق BLUE 4K">
                     <img src="blue-4k.png" alt="BLUE 4K Logo" class="logo-img">
                 </a>
                 <h3>BLUE 4K</h3>
