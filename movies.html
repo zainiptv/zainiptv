@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zain IPTV | الأفلام والمسلسلات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { 
+            --bg-dark: #07090e; 
+            --premium-blue: #0a84ff; 
+            --glass-bg: rgba(255, 255, 255, 0.03); 
+            --glass-border: rgba(255, 255, 255, 0.06); 
+            --text-light: #f5f5f7; 
+            --text-dim: #86868b; 
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        body { 
+            background: radial-gradient(circle at 50% -20%, #131c2e 0%, var(--bg-dark) 70%);
+            background-color: var(--bg-dark); 
+            color: var(--text-light); 
+        }
+        header { 
+            background: rgba(7, 9, 14, 0.7); 
+            backdrop-filter: blur(20px); 
+            position: fixed; top: 0; width: 100%; z-index: 1000; 
+            border-bottom: 1px solid var(--glass-border); 
+        }
+        .nav-container { max-width: 1100px; margin: 0 auto; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .brand-name { font-size: 24px; font-weight: 800; }
+        .brand-name span { color: var(--premium-blue); }
+        .nav-links { display: flex; gap: 35px; list-style: none; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-weight: 600; font-size: 15px; }
+        .nav-links a:hover, .nav-links a.active { color: #ffffff; }
+        
+        .section-container { max-width: 1100px; margin: 140px auto 60px auto; padding: 20px; }
+        .section-header { font-size: 32px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.5px; text-align: center; }
+        .section-header span { color: var(--premium-blue); }
+        .section-subtitle { text-align: center; color: var(--text-dim); margin-bottom: 50px; font-size: 16px; font-weight: 300; }
+        
+        .showcase-wrapper { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.3); }
+        .content-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 30px; }
+        .content-card { background: #0c0f17; border-radius: 16px; overflow: hidden; border: 1px solid var(--glass-border); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .content-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.15); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+        .card-img-wrapper { width: 100%; height: 320px; position: relative; background: #131722; }
+        .card-img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .platform-tag { 
+            position: absolute; bottom: 15px; right: 15px; 
+            background: rgba(7, 9, 14, 0.85); 
+            backdrop-filter: blur(10px); 
+            padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; 
+            border: 1px solid rgba(255,255,255,0.1); 
+        }
+        .card-details { padding: 18px; text-align: right; }
+        .card-details h4 { font-size: 16px; font-weight: 600; margin-bottom: 4px; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .card-details p { font-size: 13px; color: var(--text-dim); font-weight: 300; }
+        
+        footer { padding: 40px 20px; text-align: center; background: #040508; border-top: 1px solid var(--glass-border); font-size: 14px; color: var(--text-dim); }
+        @media (max-width: 768px) { .nav-links { display: none; } .content-grid { grid-template-columns: 1fr 1fr; gap: 15px; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="brand-name">Zain <span>IPTV</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="movies.html" class="active">الأفلام والمنصات</a></li>
+                <li><a href="pricing.html">الاشتراكات والدفع</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="section-container">
+        <h3 class="section-header">مكتبة <span>السينما والدراما</span> العالمية</h3>
+        <p class="section-subtitle">شاهد أضخم الأعمال الفنية، الحصريات، والمسلسلات الأسطورية كاملة بجودة Ultra HD مذهلة وبدون فواصل.</p>
+        
+        <div class="showcase-wrapper">
+            <div class="content-grid">
+                <!-- مسلسل 1 (صراع العروش) -->
+                <div class="content-card">
+                    <div class="card-img-wrapper">
+                        <img src="got.jpg" alt="Game of Thrones" class="card-img">
+                        <span class="platform-tag" style="color: #ff9f0a;">HBO</span>
+                    </div>
+                    <div class="card-details"><h4>Game of Thrones</h4><p>صراع العروش • كامل المواسم</p></div>
+                </div>
+                <!-- مسلسل 2 (بيت التنانين) -->
+                <div class="content-card">
+                    <div class="card-img-wrapper">
+                        <img src="hotd.jpg" alt="House of the Dragon" class="card-img">
+                        <span class="platform-tag" style="color: #ff9f0a;">HBO MAX</span>
+                    </div>
+                    <div class="card-details"><h4>House of the Dragon</h4><p>بيت التنانين • أحدث الحلقات</p></div>
+                </div>
+                <!-- مسلسل 3 (صيد خارج الحلبة) -->
+                <div class="content-card">
+                    <div class="card-img-wrapper">
+                        <img src="hunting.jpg" alt="مسلسل صيد خارج الحلبة" class="card-img">
+                        <span class="platform-tag" style="color: #30d158;">شاهد VIP</span>
+                    </div>
+                    <div class="card-details"><h4>مسلسل صيد خارج الحلبة</h4><p>دراما وتشويق • حصري</p></div>
+                </div>
+                <!-- مسلسل 4 (مسلسل الهيبة) -->
+                <div class="content-card">
+                    <div class="card-img-wrapper">
+                        <img src="hayba.jpg" alt="مسلسل الهيبة" class="card-img">
+                        <span class="platform-tag" style="color: #30d158;">شاهد VIP</span>
+                    </div>
+                    <div class="card-details"><h4>مسلسل الهيبة</h4><p>دراما وأكشن • مواسم كاملة</p></div>
+                </div>
+                <!-- مسلسل 5 (أشياء غريبة) -->
+                <div class="content-card">
+                    <div class="card-img-wrapper">
+                        <img src="stranger.jpg" alt="Stranger Things" class="card-img">
+                        <span class="platform-tag" style="color: #ff453a;">Netflix</span>
+                    </div>
+                    <div class="card-details"><h4>Stranger Things</h4><p>خيال علمي وغموض • عالمي</p></div>
+                </div>
+                <!-- فيلم 1 (أوبنهايمر) -->
+                <div class="content-card">
+                    <div class="card-img-wrapper">
+                        <img src="oppenheimer.jpg" alt="Oppenheimer" class="card-img">
+                        <span class="platform-tag" style="color: #0a84ff;">السينما</span>
+                    </div>
+                    <div class="card-details"><h4>Oppenheimer</h4><p>فيلم سيرة ذاتية وتاريخي • 4K</p></div>
+                </div>
+                <!-- فيلم 2 (سيد الخواتم) -->
+                <div class="content-card">
+                    <div class="card-img-wrapper">
+                        <img src="lotr.jpg" alt="The Lord of the Rings" class="card-img">
+                        <span class="platform-tag" style="color: #ff9f0a;">Prime Video</span>
+                    </div>
+                    <div class="card-details"><h4>The Lord of the Rings</h4><p>سيد الخواتم • النسخ الممتدة</p></div>
+                </div>
+                <!-- فيلم 3 (أفاتار) -->
+                <div class="content-card">
+                    <div class="card-img-wrapper">
+                        <img src="avatar.jpg" alt="Avatar" class="card-img">
+                        <span class="platform-tag" style="color: #0a84ff;">Disney+</span>
+                    </div>
+                    <div class="card-details"><h4>Avatar: The Way of Water</h4><p>فيلم الخيال العلمي الأسطوري</p></div>
+                </div>
+            </div>
+        </div>    <div class="showcase-wrapper">
+            <div class="content-grid">
+                <!-- مسلسل 1 ( تحت الارض) -->
+                <div class="content-card">
+                    <div class="card-img-wrapper">
+                        <img src="yeralti.jpg" alt=" yer alti " class="card-img">
+                        <span class="platform-tag" style="color: #ff9f0a;">HBO</span>
+                    </div>
+                    <div class="card-details"><h4>Game of Thrones</h4><p>تحت الارض  • احدث الحلقات</p></div>
+                </div>
+                <!-- مسلسل 2 ( التايتنك) -->
+                <div class="content-card">
+                    <div class="card-img-wrapper">
+                        <img src="Titanic.jpg" alt="House of the Dragon" class="card-img">
+                        <span class="platform-tag" style="color: #ff9f0a;">HBO MAX</span>
+                    </div>
+                    <div class="card-details"><h4>Titanic</h4><p>فيلم التايتنك  • رومانسي مغامرة </p></div>
+                </div>
+                <!-- مسلسل 3 (قيامة ارطغول ) -->
+                <div class="content-card">
+                    <div class="card-img-wrapper">
+                        <img src="arto.jpg" alt="Diriliş Ertuğrul " class="card-img">
+                        <span class="platform-tag" style="color: #30d158;">شاهد VIP</span>
+                    </div>
+                    <div class="card-details"><h4>Diriliş Ertuğrul</h4><p>دراما وتشويق • حصري</p></div>
+                </div>
+                <!-- مسلسل 4 (مسلسل الحفرة) -->
+                <div class="content-card">
+                    <div class="card-img-wrapper">
+                        <img src="cukur.jpg" alt="مسلسل الحفرة" class="card-img">
+                        <span class="platform-tag" style="color: #30d158;">شاهد VIP</span>
+                    </div>
+
+    </section>
+
+    <footer><p>جميع الحقوق محفوظة &copy; 2026 لـ <strong>Zain IPTV</strong></p></footer>
+</body>
+</html>

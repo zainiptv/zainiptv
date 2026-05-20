@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zain IPTV | باقات الاشتراك</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { 
+            --bg-dark: #07090e; 
+            --premium-blue: #0a84ff; 
+            --glass-bg: rgba(255, 255, 255, 0.03); 
+            --glass-border: rgba(255, 255, 255, 0.06); 
+            --text-light: #f5f5f7; 
+            --text-dim: #86868b; 
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        body { 
+            background: radial-gradient(circle at 50% -20%, #131c2e 0%, var(--bg-dark) 70%);
+            background-color: var(--bg-dark); 
+            color: var(--text-light); 
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        header { 
+            background: rgba(7, 9, 14, 0.7); 
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            position: fixed; top: 0; width: 100%; z-index: 1000; 
+            border-bottom: 1px solid var(--glass-border); 
+        }
+        .nav-container { max-width: 1100px; margin: 0 auto; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .brand-name { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; color: #ffffff; }
+        .brand-name span { color: var(--premium-blue); font-weight: 400; }
+        .nav-links { display: flex; gap: 35px; list-style: none; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-weight: 600; font-size: 15px; transition: color 0.4s; }
+        .nav-links a:hover, .nav-links a.active { color: #ffffff; }
+        
+        .section-container { max-width: 1100px; margin: 160px auto 60px auto; padding: 20px; }
+        .section-header { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 40px; letter-spacing: -0.5px; }
+        .section-header span { color: var(--premium-blue); }
+        
+        /* شبكة الكروت الزجاجية */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .price-card { 
+            background-color: var(--glass-bg); 
+            border: 1px solid var(--glass-border); 
+            border-radius: 24px; 
+            padding: 45px 30px; 
+            text-align: center; 
+            backdrop-filter: blur(10px);
+            transition: all 0.3s; 
+        }
+        .price-card.popular { 
+            border-color: var(--premium-blue); 
+            background: linear-gradient(180deg, rgba(10, 132, 255, 0.04) 0%, var(--glass-bg) 100%); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3); 
+        }
+        .price-title { font-size: 17px; color: var(--text-dim); margin-bottom: 15px; font-weight: 600; }
+        .price-amount { font-size: 48px; font-weight: 800; color: #ffffff; margin-bottom: 25px; letter-spacing: -1px; }
+        .price-amount span { font-size: 18px; color: var(--text-dim); font-weight: 400; }
+        
+        .price-features { list-style: none; margin-bottom: 40px; text-align: right; padding-right: 5px; }
+        .price-features li { margin-bottom: 15px; font-size: 14px; color: #cbd5e1; display: flex; align-items: center; gap: 10px; font-weight: 300; }
+        .price-features li i { color: var(--premium-blue); font-size: 10px; }
+        
+        .btn-buy { display: block; padding: 12px; border-radius: 30px; font-size: 15px; font-weight: 600; text-decoration: none; text-align: center; transition: all 0.3s; background: rgba(255,255,255,0.05); color: #ffffff; border: 1px solid var(--glass-border); }
+        .price-card.popular .btn-buy { background: var(--premium-blue); color: #ffffff; border: none; }
+        .price-card.popular .btn-buy:hover { background: #0071e3; box-shadow: 0 4px 15px rgba(10, 132, 255, 0.3); }
+        .btn-buy:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
+        
+        /* خيارات السداد */
+        .payment-section { text-align: center; margin-top: 80px; padding: 50px 40px; border-radius: 24px; background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); }
+        .payment-row { display: flex; justify-content: center; gap: 25px; margin-top: 25px; flex-wrap: wrap; }
+        .pay-pill { background: #0c0f17; border: 1px solid var(--glass-border); padding: 12px 30px; border-radius: 40px; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 10px; }
+        .pay-pill i { color: var(--premium-blue); }
+        
+        footer { padding: 40px 20px; text-align: center; background: #040508; border-top: 1px solid var(--glass-border); font-size: 14px; color: var(--text-dim); }
+        .footer-info { display: flex; justify-content: center; gap: 40px; margin-bottom: 20px; }
+        .footer-info a { color: var(--text-light); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .footer-info a:hover { color: var(--premium-blue); }
+        @media (max-width: 768px) { .nav-links { display: none; } .pricing-grid { gap: 20px; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="brand-name">Zain <span>IPTV</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="movies.html">الأفلام والمنصات</a></li>
+                <li><a href="pricing.html" class="active">الاشتراكات والدفع</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="section-container">
+        <h3 class="section-header">خطط مرنة تناسب <span>تطلعاتك الرقمية</span></h3>
+        <div class="pricing-grid">
+            <!-- 3 أشهر -->
+            <div class="price-card">
+                <div class="price-title">الخطة الربع سنوية</div>
+                <div class="price-amount">20$ <span>/ 3 أشهر</span></div>
+                <ul class="price-features">
+                    <li><i class="fas fa-circle"></i> الوصول الكامل لكافة القنوات والمنصات</li>
+                    <li><i class="fas fa-circle"></i> بث بجودة FHD / 4K عالية النقاء والوضوح</li>
+                    <li><i class="fas fa-circle"></i> دعم فني متواصل ومستمر طيلة الاشتراك</li>
+                </ul>
+                <a href="https://t.me/zainiptv4" target="_blank" class="btn-buy">ابدأ الآن</a>
+            </div>
+            <!-- سنة -->
+            <div class="price-card popular">
+                <div class="price-title" style="color: var(--premium-blue);">الخطة السنوية (الأكثر طلباً)</div>
+                <div class="price-amount">50$ <span>/ 12 شهر</span></div>
+                <ul class="price-features">
+                    <li><i class="fas fa-circle"></i> توفير مالي كبير مقارنة بالباقات الأخرى</li>
+                    <li><i class="fas fa-circle"></i> ثبات مطلق ومضمون 100% أثناء المباريات الكبرى</li>
+                    <li><i class="fas fa-circle"></i> أولوية قصوى وشاملة للدعم الفني 24/7</li>
+                </ul>
+                <a href="https://wa.me/963958793933" target="_blank" class="btn-buy">اشترك عبر واتساب</a>
+            </div>
+            <!-- 6 أشهر -->
+            <div class="price-card">
+                <div class="price-title">الخطة نصف السنوية</div>
+                <div class="price-amount">35$ <span>/ 6 أشهر</span></div>
+                <ul class="price-features">
+                    <li><i class="fas fa-circle"></i> وصول متكامل للمكتبة الترفيهية والمباريات</li>
+                    <li><i class="fas fa-circle"></i> متوافق مع كافة الأجهزة الذكية والـ TV Box</li>
+                    <li><i class="fas fa-circle"></i> تحديثات تلقائية دورية وفورية لكل جديد</li>
+                </ul>
+                <a href="https://t.me/zainiptv4" target="_blank" class="btn-buy">ابدأ الآن</a>
+            </div>
+        </div>
+
+        <!-- خيارات السداد المعتمدة -->
+        <div class="payment-section">
+            <h3 class="section-header" style="font-size: 24px; margin-bottom: 10px;">خيارات سداد مريحة</h3>
+            <p style="color: var(--text-dim); font-size: 15px;">نوفر لك طرق دفع محلية معتمدة لتسديد الاشتراك براحة تامة من منزلك.</p>
+            <div class="payment-row">
+                <div class="pay-pill"><i class="fas fa-wallet"></i> شام كاش (Sham Cash)</div>
+                <div class="pay-pill"><i class="fas fa-credit-card"></i> تحويل محلي مباشر / كاش</div>
+    <div class="pay-pill"><i class="fas fa-wallet"></i> زراعات بنك (ziraat bank)</div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-info">
+            <a href="https://t.me/zainiptv4" target="_blank"><i class="fab fa-telegram"></i> تلجرام</a>
+            <a href="https://wa.me/963958793933" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+        </div>
+        <p>جميع الحقوق محفوظة &copy; 2026 لـ <strong>Zain IPTV</strong></p>
+    </footer>
+</body>
+</html>
