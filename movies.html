@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zain IPTV | الأفلام والمسلسلات</title>
+    <title>Sony IPTV | الأفلام والمسلسلات</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -15,25 +15,83 @@
             --text-light: #f5f5f7; 
             --text-dim: #86868b; 
         }
+        
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        
         body { 
             background: radial-gradient(circle at 50% -20%, #131c2e 0%, var(--bg-dark) 70%);
             background-color: var(--bg-dark); 
             color: var(--text-light); 
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
+
+        /* Header & Navigation */
         header { 
-            background: rgba(7, 9, 14, 0.7); 
-            backdrop-filter: blur(20px); 
+            background: rgba(7, 9, 14, 0.8);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             position: fixed; top: 0; width: 100%; z-index: 1000; 
             border-bottom: 1px solid var(--glass-border); 
         }
-        .nav-container { max-width: 1100px; margin: 0 auto; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .brand-name { font-size: 24px; font-weight: 800; }
-        .brand-name span { color: var(--premium-blue); }
-        .nav-links { display: flex; gap: 35px; list-style: none; }
-        .nav-links a { color: var(--text-dim); text-decoration: none; font-weight: 600; font-size: 15px; }
-        .nav-links a:hover, .nav-links a.active { color: #ffffff; }
         
+        .nav-container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 15px 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .brand-name { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; color: #ffffff; text-decoration: none; z-index: 1001; }
+        .brand-name span { color: var(--premium-blue); font-weight: 400; }
+        
+        /* زر القائمة الجانبية (3 شخوط) */
+        .menu-toggle { 
+            display: block; 
+            font-size: 26px; 
+            color: #ffffff; 
+            background: none; 
+            border: none; 
+            cursor: pointer; 
+            z-index: 1002; 
+            transition: color 0.3s;
+        }
+        .menu-toggle:hover { color: var(--premium-blue); }
+
+        /* القائمة المنسدلة من اليمين */
+        .nav-links { 
+            position: fixed; 
+            top: 0; 
+            right: -400px; 
+            width: 350px; 
+            height: 100vh; 
+            background: rgba(7, 9, 14, 0.98); 
+            border-left: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column; 
+            justify-content: flex-start; 
+            padding: 100px 40px 40px 40px; 
+            gap: 25px; 
+            transition: right 0.5s cubic-bezier(0.1, 0.9, 0.2, 1);
+            box-shadow: -15px 0 40px rgba(0,0,0,0.8);
+            list-style: none;
+            z-index: 1000;
+        }
+        .nav-links.active { right: 0; }
+        
+        .nav-links a { 
+            color: var(--text-dim); 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 18px; 
+            transition: color 0.3s; 
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
+            padding-bottom: 15px; 
+            display: block;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #ffffff; padding-right: 10px; }
+
         .section-container { max-width: 1100px; margin: 140px auto 60px auto; padding: 20px; }
         .section-header { font-size: 32px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.5px; text-align: center; }
         .section-header span { color: var(--premium-blue); }
@@ -58,16 +116,31 @@
         .card-details p { font-size: 13px; color: var(--text-dim); font-weight: 300; }
         
         footer { padding: 40px 20px; text-align: center; background: #040508; border-top: 1px solid var(--glass-border); font-size: 14px; color: var(--text-dim); }
-        @media (max-width: 768px) { .nav-links { display: none; } .content-grid { grid-template-columns: 1fr 1fr; gap: 15px; } }
+        
+        /* 📱 شاشات الموبايل */
+        @media (max-width: 768px) {
+            .nav-links { width: 75%; right: -100%; padding: 80px 25px 30px 25px; }
+            .content-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
+            .showcase-wrapper { padding: 20px; }
+        }
     </style>
 </head>
 <body>
+
     <header>
         <div class="nav-container">
-            <div class="brand-name">Zain <span>IPTV</span></div>
-            <ul class="nav-links">
+            <!-- زر القائمة (3 شخوط) على اليمين دائماً -->
+            <button class="menu-toggle" id="menuBtn" aria-label="Open Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- الشعار على اليسار -->
+            <a href="index.html" class="brand-name">Sony <span>IPTV</span></a>
+            
+            <!-- القائمة الجانبية المخفية -->
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="movies.html" class="active">الأفلام والمنصات</a></li>
+                <li><a href="movies.html" class="active">الأفلام والمسلسلات</a></li>
                 <li><a href="pricing.html">الاشتراكات والدفع</a></li>
             </ul>
         </div>
@@ -79,7 +152,41 @@
         
         <div class="showcase-wrapper">
             <div class="content-grid">
-                <!-- مسلسل 1 (صراع العروش) -->
+                
+                <!-- الإضافات الجديدة الخاصة بك -->
+                <div class="content-card">
+                    <div class="card-img-wrapper">
+                        <img src="yeralti.jpg" alt="yer alti" class="card-img">
+                        <span class="platform-tag" style="color: #ff9f0a;">HBO</span>
+                    </div>
+                    <div class="card-details"><h4>Yer Altı</h4><p>تحت الارض • احدث الحلقات</p></div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-img-wrapper">
+                        <img src="Titanic.jpg" alt="Titanic" class="card-img">
+                        <span class="platform-tag" style="color: #0a84ff;">السينما</span>
+                    </div>
+                    <div class="card-details"><h4>Titanic</h4><p>فيلم التايتنك • رومانسي ومغامرة</p></div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-img-wrapper">
+                        <img src="arto.jpg" alt="Diriliş Ertuğrul" class="card-img">
+                        <span class="platform-tag" style="color: #30d158;">TRT 1</span>
+                    </div>
+                    <div class="card-details"><h4>Diriliş Ertuğrul</h4><p>قيامة أرطغرل • دراما تاريخية</p></div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-img-wrapper">
+                        <img src="cukur.jpg" alt="مسلسل الحفرة" class="card-img">
+                        <span class="platform-tag" style="color: #ff453a;">Show TV</span>
+                    </div>
+                    <div class="card-details"><h4>Çukur</h4><p>مسلسل الحفرة • أكشن وعصابات</p></div>
+                </div>
+
+                <!-- الأفلام والمسلسلات السابقة -->
                 <div class="content-card">
                     <div class="card-img-wrapper">
                         <img src="got.jpg" alt="Game of Thrones" class="card-img">
@@ -87,7 +194,7 @@
                     </div>
                     <div class="card-details"><h4>Game of Thrones</h4><p>صراع العروش • كامل المواسم</p></div>
                 </div>
-                <!-- مسلسل 2 (بيت التنانين) -->
+                
                 <div class="content-card">
                     <div class="card-img-wrapper">
                         <img src="hotd.jpg" alt="House of the Dragon" class="card-img">
@@ -95,7 +202,7 @@
                     </div>
                     <div class="card-details"><h4>House of the Dragon</h4><p>بيت التنانين • أحدث الحلقات</p></div>
                 </div>
-                <!-- مسلسل 3 (صيد خارج الحلبة) -->
+                
                 <div class="content-card">
                     <div class="card-img-wrapper">
                         <img src="hunting.jpg" alt="مسلسل صيد خارج الحلبة" class="card-img">
@@ -103,7 +210,7 @@
                     </div>
                     <div class="card-details"><h4>مسلسل صيد خارج الحلبة</h4><p>دراما وتشويق • حصري</p></div>
                 </div>
-                <!-- مسلسل 4 (مسلسل الهيبة) -->
+                
                 <div class="content-card">
                     <div class="card-img-wrapper">
                         <img src="hayba.jpg" alt="مسلسل الهيبة" class="card-img">
@@ -111,7 +218,7 @@
                     </div>
                     <div class="card-details"><h4>مسلسل الهيبة</h4><p>دراما وأكشن • مواسم كاملة</p></div>
                 </div>
-                <!-- مسلسل 5 (أشياء غريبة) -->
+                
                 <div class="content-card">
                     <div class="card-img-wrapper">
                         <img src="stranger.jpg" alt="Stranger Things" class="card-img">
@@ -119,7 +226,7 @@
                     </div>
                     <div class="card-details"><h4>Stranger Things</h4><p>خيال علمي وغموض • عالمي</p></div>
                 </div>
-                <!-- فيلم 1 (أوبنهايمر) -->
+                
                 <div class="content-card">
                     <div class="card-img-wrapper">
                         <img src="oppenheimer.jpg" alt="Oppenheimer" class="card-img">
@@ -127,7 +234,7 @@
                     </div>
                     <div class="card-details"><h4>Oppenheimer</h4><p>فيلم سيرة ذاتية وتاريخي • 4K</p></div>
                 </div>
-                <!-- فيلم 2 (سيد الخواتم) -->
+                
                 <div class="content-card">
                     <div class="card-img-wrapper">
                         <img src="lotr.jpg" alt="The Lord of the Rings" class="card-img">
@@ -135,7 +242,7 @@
                     </div>
                     <div class="card-details"><h4>The Lord of the Rings</h4><p>سيد الخواتم • النسخ الممتدة</p></div>
                 </div>
-                <!-- فيلم 3 (أفاتار) -->
+                
                 <div class="content-card">
                     <div class="card-img-wrapper">
                         <img src="avatar.jpg" alt="Avatar" class="card-img">
@@ -143,42 +250,37 @@
                     </div>
                     <div class="card-details"><h4>Avatar: The Way of Water</h4><p>فيلم الخيال العلمي الأسطوري</p></div>
                 </div>
-            </div>
-        </div>    <div class="showcase-wrapper">
-            <div class="content-grid">
-                <!-- مسلسل 1 ( تحت الارض) -->
-                <div class="content-card">
-                    <div class="card-img-wrapper">
-                        <img src="yeralti.jpg" alt=" yer alti " class="card-img">
-                        <span class="platform-tag" style="color: #ff9f0a;">HBO</span>
-                    </div>
-                    <div class="card-details"><h4>Game of Thrones</h4><p>تحت الارض  • احدث الحلقات</p></div>
-                </div>
-                <!-- مسلسل 2 ( التايتنك) -->
-                <div class="content-card">
-                    <div class="card-img-wrapper">
-                        <img src="Titanic.jpg" alt="House of the Dragon" class="card-img">
-                        <span class="platform-tag" style="color: #ff9f0a;">HBO MAX</span>
-                    </div>
-                    <div class="card-details"><h4>Titanic</h4><p>فيلم التايتنك  • رومانسي مغامرة </p></div>
-                </div>
-                <!-- مسلسل 3 (قيامة ارطغول ) -->
-                <div class="content-card">
-                    <div class="card-img-wrapper">
-                        <img src="arto.jpg" alt="Diriliş Ertuğrul " class="card-img">
-                        <span class="platform-tag" style="color: #30d158;">شاهد VIP</span>
-                    </div>
-                    <div class="card-details"><h4>Diriliş Ertuğrul</h4><p>دراما وتشويق • حصري</p></div>
-                </div>
-                <!-- مسلسل 4 (مسلسل الحفرة) -->
-                <div class="content-card">
-                    <div class="card-img-wrapper">
-                        <img src="cukur.jpg" alt="مسلسل الحفرة" class="card-img">
-                        <span class="platform-tag" style="color: #30d158;">شاهد VIP</span>
-                    </div>
 
+            </div>
+        </div>
     </section>
 
-    <footer><p>جميع الحقوق محفوظة &copy; 2026 لـ <strong>Zain IPTV</strong></p></footer>
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 لـ <strong>Sony IPTV</strong></p>
+    </footer>
+
+    <!-- سكريبت إظهار القائمة من اليمين بشكل فخم -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', (e) => {
+            navLinks.classList.toggle('active');
+            const icon = menuBtn.querySelector('i');
+            if(navLinks.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+            e.stopPropagation();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && e.target !== menuBtn) {
+                navLinks.classList.remove('active');
+                menuBtn.querySelector('i').className = 'fas fa-bars';
+            }
+        });
+    </script>
 </body>
 </html>
